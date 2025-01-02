@@ -1,0 +1,8 @@
+<% content_for :title, "Posts" %>
+
+<h1>Posts</h1>
+
+<%= link_to "New Post", new_admin_post_path, class: 'btn btn-primary' %>
+
+<%= render "admin/posts/table", posts: @posts %>
+

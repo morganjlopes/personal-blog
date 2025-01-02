@@ -1,3 +1,11 @@
 .field {
   margin-bottom: 1rem;
 }
+
+td {
+  vertical-align: middle;
+}
+
+.w-md {
+  max-width: 800px;
+}
