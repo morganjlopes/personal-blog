@@ -9,7 +9,7 @@
         <%= f.input :name, input_html: { class: 'form-control' } %>
       </div>
 
-      <% unless @post.slug.nil? %>
+      <% unless @post.slug.nil? || @post.id.nil? %>
         <div class='field'>
           <%= f.label :slug %>
           <div class="input-group">
