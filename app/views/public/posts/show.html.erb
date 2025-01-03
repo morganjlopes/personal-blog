@@ -1,6 +1,12 @@
-<div class='container w-md'>
+<section class='container text-center py-5'>
   <h1><%= @post.name %></h1>
-  <%= @post.content %>
+  <p class='mt-3'>
+    <%= format_date(@post.published_at) %>
+  </p>
+</section>
 
-  <%= @post.published_at %>
-</div>
+<section class='container w-md min-h-vh-75'>
+  <div class='lead'>
+    <%= @post.content %>
+  </div>
+</section>

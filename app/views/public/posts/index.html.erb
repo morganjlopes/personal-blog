@@ -1,8 +1,18 @@
 
 <% content_for :title, "Posts" %>
 
-<div id="posts" class='container'>
+<section class='container text-center py-5'>
+  <h1>Writings</h1>
+</section>
+
+<section id="posts" class='container w-md'>
   <% @posts.each do |post| %>
-    <%= link_to post.name, post %>
+    <div class='card'>
+      <div class='card-body'>
+        <h3 class='mb-0'>
+          <%= link_to post.name, post, class: 'd-block text-decoration-none text-dark stretched-link' %>
+        </h3>
+      </div>
+    </div>
   <% end %>
-</div>
+</section>

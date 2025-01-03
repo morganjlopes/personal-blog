@@ -1,0 +1,18 @@
+
+<% content_for :title, "Morgan Lopes" %>
+
+<section class='container w-md py-5 text-center'>
+  <h1>Writings from Morgan Lopes</h1>
+  <p class='lead'>Software engineer and seasoned entrepreneur.</p>
+</section>
+
+<div id="posts" class='container w-md'>
+  <h2 class=''>Recent Posts</h2>
+  <ul class='lead'>
+    <% @posts.each do |post| %>
+      <li>
+        <%= link_to post.name, post, class: 'd-block text-decoration-none text-dark stretched-link' %>
+      </li>
+    <% end %>
+  </ul>
+</div>

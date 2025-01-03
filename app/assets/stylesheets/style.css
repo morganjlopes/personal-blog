@@ -9,3 +9,7 @@ td {
 .w-md {
   max-width: 800px;
 }
+
+.min-h-vh-75 {
+  min-height: 75vh;
+}
