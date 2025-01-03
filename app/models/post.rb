@@ -4,7 +4,10 @@ class Post < ApplicationRecord
 
   has_rich_text :content
 
+  scope :recent,              -> { where('published_at > ?', 1.month.ago) }
   scope :published,           -> { where.not(published_at: nil).order(published_at: :desc) }
+  scope :drafts,              -> { where(published_at: nil) }
+  scope :scheduled,           -> { where('published_at > ?', Time.zone.now) }
   scope :publicly_searchable, -> { published.where(visibility: :public) }
   
   enum :page_type, [
@@ -21,4 +24,11 @@ class Post < ApplicationRecord
   
   validates :name, presence: true
   validates :content, presence: true
+
+  def self.next_unscheduled_date
+    scheduled_dates = Post.published.pluck("DATE(published_at)")
+    current_date    = Time.zone.today
+  
+    (current_date..).find { |date| scheduled_dates.include?(date) == false }
+  end
 end

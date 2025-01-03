@@ -1,3 +1,9 @@
+trix-toolbar {
+  position: sticky;
+  top: 0px;
+  background: white;
+}
+
 .field {
   margin-bottom: 1rem;
 }
@@ -10,6 +16,21 @@ td {
   max-width: 800px;
 }
 
+.min-h-vh-50 {
+  min-height: 50vh;
+}
+
 .min-h-vh-75 {
   min-height: 75vh;
+}
+
+.btn-outline-form {
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  color: var(--bs-border-color);
+}
+
+.btn-outline-form:hover {
+  border-color: #666;
+  background-color: #666;
+  color: white;
 }

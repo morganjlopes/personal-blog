@@ -1,8 +1,23 @@
 <% content_for :title, "Posts" %>
 
+<%= link_to "New Post", new_admin_post_path, class: 'btn btn-primary float-end mt-2' %>
 <h1>Posts</h1>
 
-<%= link_to "New Post", new_admin_post_path, class: 'btn btn-primary' %>
+<ul class="nav nav-underline my-3">
+  <% {
+    "All"       => nil,
+    "Recent"    => 'recent',
+    "Published" => 'published',
+    "Drafts"    => 'drafts',
+    "Scheduled" => 'scheduled'
+  }.each do |name, scope| %>
+    <% custom_class = 'active' if params[:scope] == name.downcase || (params[:scope].nil? && scope.nil?) %>
+    
+    <li class="nav-item">
+      <%= link_to name, url_for(scope: scope), class: "nav-link #{custom_class}" %>
+    </li>
+  <% end %>
+</ul>
 
 <%= render "admin/posts/table", posts: @posts %>
 

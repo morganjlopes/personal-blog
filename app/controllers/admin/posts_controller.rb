@@ -1,16 +1,23 @@
 class Admin::PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
+  layout "admin"
 
   def index
     @posts = Post.order(created_at: :desc)
+    @posts = @posts.send(params[:scope]) if params[:scope].present?
   end
 
   def show
   end
 
   def new
+    @dup  = Post.find(params[:dup]) if params[:dup].present?
     @post = Post.new(
-      published_at: Time.zone.now,
+      name:         @dup.present? ? @dup.name : "Untitled Post",
+      content:      @dup.present? ? @dup.content : "",
+      slug:         @dup.present? ? (@dup.slug + "-copy") : "",
+      page_type:    @dup.present? ? @dup.page_type : "post",
+      published_at: Post.next_unscheduled_date,
     )
   end
 
@@ -22,7 +29,7 @@ class Admin::PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save!
-        format.html { redirect_to [:admin, @post], notice: "Post was successfully created." }
+        format.html { redirect_to edit_admin_post_path(@post), notice: "Post was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -33,7 +40,7 @@ class Admin::PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to [:admin, @post], notice: "Post was successfully updated." }
+        format.html { redirect_to edit_admin_post_path(@post), notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit, status: :unprocessable_entity }
