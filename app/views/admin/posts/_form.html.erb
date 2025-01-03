@@ -10,12 +10,15 @@
       </div>
 
       <% unless @post.slug.nil? %>
-        <div class="input-group field">
-          <span class="input-group-text bg-white"><%= posts_url %>/</span>
-          <%= f.text_field :slug, class: "form-control" %>
-          <%= link_to post_url(@post), target: "_blank", class: "btn btn-outline-form" do %>
-            <i class="bi bi-arrow-up-right-square"></i>
-          <% end %>
+        <div class='field'>
+          <%= f.label :slug %>
+          <div class="input-group">
+            <span class="input-group-text bg-white"><%= posts_url %>/</span>
+            <%= f.text_field :slug, class: "form-control" %>
+            <%= link_to post_url(@post), target: "_blank", title: 'Open in New Window', class: "btn btn-outline-form" do %>
+              <i class="bi bi-arrow-up-right-square"></i>
+            <% end %>
+          </div>
         </div>
       <% end %>
 
@@ -25,17 +28,21 @@
     </div>
 
     <div class='col-sm-4'>
-      <%= f.label :published_at %>
+      <%= f.label :published_at, "Publish Date" %>
       <div class="input-group mb-3">
         <%= f.input_field :published_at, as: :string, class: 'form-control' %>
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Options</button>
+        <button class="btn btn-outline-form dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Options</button>
         <ul class="dropdown-menu dropdown-menu-end">
           <li><h6 class="dropdown-header">Set Publish Date</h6></li>
-          <li><%= link_to "Now", "#", class: "targetValueChange dropdown-item", data: { target: '#post_published_at', value: Time.zone.now.to_date.to_s } %></li>
-          <li><%= link_to "Tomorrow", "#", class: "targetValueChange dropdown-item", data: { target: '#post_published_at', value: 1.day.ago.to_date.to_s } %></li>
-          <li><%= link_to "Next Unscheduled Date", "#", class: "targetValueChange dropdown-item", data: { target: '#post_published_at', value: Post.next_unscheduled_date.to_s } %></li>
+          <% {
+            "Today"                 => Time.zone.now.to_date.to_s,
+            "Tomorrow"              => 1.day.from_now.to_date.to_s,
+            "Next Unscheduled Date" => Post.next_unscheduled_date.to_s
+          }.each do |name, value| %>
+            <li><%= link_to name, "#", class: "targetValueChange dropdown-item", data: { target: '#post_published_at', value: value } %></li>
+          <% end %>
           <li><hr class="dropdown-divider"></li>
-          <li><%= link_to "Remove Date", "#", class: "targetValueChange dropdown-item", data: { target: '#post_published_at', value: "" } %></li>
+          <li><%= link_to "Remove Date", "#", class: "text-danger targetValueChange dropdown-item", data: { target: '#post_published_at', value: "" } %></li>
         </ul>
       </div>
 

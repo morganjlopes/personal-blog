@@ -13,7 +13,7 @@ class Admin::PostsController < ApplicationController
   def new
     @dup  = Post.find(params[:dup]) if params[:dup].present?
     @post = Post.new(
-      name:         @dup.present? ? @dup.name : "Untitled Post",
+      name:         @dup.present? ? "#{@dup.name} Copy" : "Untitled Post",
       content:      @dup.present? ? @dup.content : "",
       slug:         @dup.present? ? (@dup.slug + "-copy") : "",
       page_type:    @dup.present? ? @dup.page_type : "post",
