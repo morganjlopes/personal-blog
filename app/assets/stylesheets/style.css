@@ -4,10 +4,18 @@ trix-toolbar {
   background: white;
 }
 
-.trix-content pre {
+pre {
   margin: 12px 0px;
   border-radius: 5px;
   padding: 1em;
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+  font-family: monospace;
+  font-size: 0.9em;
+  white-space: pre;
+  background-color: #eee;
+  overflow-x: auto;
 }
 
 .field {
