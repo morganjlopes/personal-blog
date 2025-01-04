@@ -12,15 +12,7 @@
         <td><%= link_to post.name, [:admin, post] %></td>
         <td><%= format_date(post.published_at) %></td>
         <td class='text-end'>
-          <%= link_to new_admin_post_path(dup: post), class: 'btn btn-outline-secondary' do %>
-            <i class="bi bi-copy me-1"></i> Copy
-          <% end %>
-          <%= link_to post, target: "_blank", class: 'btn btn-outline-secondary' do %>
-            <i class="bi bi-arrow-up-right-square me-1"></i> Public
-          <% end %>
-          <%= link_to edit_admin_post_path(post), class: 'btn btn-outline-primary' do %>
-            <i class="bi bi-pencil me-1"></i> Edit
-          <% end %>
+          <%= render 'admin/posts/actions', post: post %>
         </td>
       </tr>
     <% end %>
