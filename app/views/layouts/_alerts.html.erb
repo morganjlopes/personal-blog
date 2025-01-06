@@ -1,11 +1,15 @@
 <% if notice.present? %>
-  <div class='bg bg-success container py-3'>
-    <%= notice %>
+  <div class='bg bg-success py-3'>
+    <div class='container'>
+      <%= notice %>
+    </div>
   </div>
 <% end %>
 
 <% if alert.present? %>
-  <div class='bg bg-success container py-3'>
-    <%= alert %>
+  <div class='bg bg-success py-3'>
+    <div class='container'>
+      <%= alert %>
+    </div>
   </div>
 <% end %>

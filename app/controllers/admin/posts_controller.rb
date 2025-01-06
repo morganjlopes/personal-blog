@@ -5,6 +5,7 @@ class Admin::PostsController < ApplicationController
   def index
     @posts = Post.order(created_at: :desc)
     @posts = @posts.send(params[:scope]) if params[:scope].present?
+    @posts = @posts.contains(params[:q]) if params[:q].present?
   end
 
   def show

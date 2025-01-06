@@ -3,6 +3,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.publicly_searchable
+    @posts = @posts.contains(params[:q]) if params[:q].present?
   end
 
   def show

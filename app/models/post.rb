@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  include PgSearch::Model
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -9,6 +10,17 @@ class Post < ApplicationRecord
   scope :drafts,              -> { where(published_at: nil) }
   scope :scheduled,           -> { where('published_at > ?', Time.zone.now) }
   scope :publicly_searchable, -> { published.where(visibility: :public) }
+
+  pg_search_scope :contains,
+                  against: {
+                    name:    'A',
+                    content: 'B',
+                  },
+                  using: {
+                      # :trigram => {},
+                      # :dmetaphone => {},
+                      tsearch: { prefix: true }
+                  }
   
   enum :page_type, [
     :post,

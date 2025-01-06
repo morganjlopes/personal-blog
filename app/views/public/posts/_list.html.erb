@@ -1,0 +1,7 @@
+<ul class='lead'>
+  <% posts.each do |post| %>
+    <li>
+      <%= link_to post.name, post, class: 'd-block text-decoration-none text-dark' %>
+    </li>
+  <% end %>
+</ul>
