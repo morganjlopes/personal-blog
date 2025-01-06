@@ -17,8 +17,6 @@ class Post < ApplicationRecord
                     content: 'B',
                   },
                   using: {
-                      # :trigram => {},
-                      # :dmetaphone => {},
                       tsearch: { prefix: true }
                   }
   
@@ -36,6 +34,10 @@ class Post < ApplicationRecord
   
   validates :name, presence: true
   validates :content, presence: true
+
+  def summary
+    content.to_plain_text.truncate(400)
+  end
 
   def self.next_unscheduled_date
     scheduled_dates = Post.published.pluck("DATE(published_at)")

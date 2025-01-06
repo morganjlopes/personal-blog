@@ -12,3 +12,27 @@
     <%= @post.content %>
   </div>
 </section>
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline":      "<%= @post.name %>",
+  "datePublished": "<%= @post.published_at.iso8601 %>",
+  "dateModified":  "<%= @post.updated_at.iso8601 %>",
+  "author": {
+    "@type": "Person",
+    "name": "<%= 'Morgan Lopes' %>"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "<%= 'Morgan Lopes Blog' %>",
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "<%= url_for(@post) %>"
+  },
+  "articleBody": "<%= @post.summary %>"
+}
+</script>

@@ -1,7 +1,10 @@
-<ul class='lead'>
-  <% posts.each do |post| %>
-    <li>
-      <%= link_to post.name, post, class: 'd-block text-decoration-none text-dark' %>
-    </li>
-  <% end %>
-</ul>
+<% posts.each do |post| %>
+  <article>
+    <h3 class='lead mb-3'>
+      <%= link_to post, class: 'd-block text-decoration-none text-dark' do %>
+        <i class='bi bi-file-earmark-text me-1'></i>
+        <%= post.name %>
+      <% end %>
+    </h3>
+  </article>
+<% end %>

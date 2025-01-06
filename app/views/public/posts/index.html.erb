@@ -11,3 +11,23 @@
   <br>
   <%= render 'public/posts/list', posts: @posts %>
 </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Morgan Lopes Blog",
+  "description": "A collection of our latest posts on technology, business, and more.",
+  "blogPosts": [
+    <% @posts.each_with_index do |post, index| %>
+      <%= "," unless index == 0 %>{
+        "@type": "BlogPosting",
+        "headline": "<%= post.name %>",
+        "datePublished": "<%= post.published_at.iso8601 %>",
+        "url": "<%= post_url(post) %>",
+        "description": "<%= post.summary %>"
+      }
+    <% end %>
+  ]
+}
+</script>
