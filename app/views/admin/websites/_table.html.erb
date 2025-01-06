@@ -1,0 +1,23 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th class='text-center'>Posts</th>
+      <th>Url</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% websites.each do |website| %>
+      <tr>
+        <td><%= website.name %></td>
+        <td class='text-center'><%= website.posts.count %></td>
+        <td>
+          <%= root_url(subdomain: website.subdomain) %>
+        <td class='text-end'>
+          <%= link_to 'Edit', edit_admin_website_path(website), class: 'btn btn-outline-primary' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

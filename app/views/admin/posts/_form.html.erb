@@ -50,6 +50,10 @@
       </div>
 
       <div class='field'>
+        <%= f.association :websites, input_html: { class: 'form-control' } %>
+      </div>
+
+      <div class='field'>
         <%= f.input :is_pinned, input_html: { class: '' } %>
       </div>
 

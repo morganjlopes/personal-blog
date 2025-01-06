@@ -3,6 +3,9 @@ class Post < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  has_many :website_posts
+  has_many :websites, through: :website_posts
+
   has_rich_text :content
 
   scope :recent,              -> { where('published_at > ?', 1.month.ago) }

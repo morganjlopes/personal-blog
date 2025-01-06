@@ -1,6 +1,5 @@
-class Admin::PostsController < ApplicationController
+class Admin::PostsController < Admin::BaseController
   before_action :set_post, only: %i[ show edit update destroy ]
-  layout "admin"
 
   def index
     @posts = Post.order(created_at: :desc)
@@ -72,7 +71,8 @@ class Admin::PostsController < ApplicationController
         :published_at,
         :is_pinned,
         :visibility, 
-        :slug
+        :slug,
+        website_ids: []
       ])
     end
 end

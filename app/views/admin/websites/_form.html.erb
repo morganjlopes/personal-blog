@@ -1,0 +1,34 @@
+
+<%= simple_form_for([:admin, @website]) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <div class='field'>
+      <%= f.input :name, input_html: { class: 'form-control' } %>
+    </div>
+
+    <div class='field'>
+      <%= f.label :tagline %>
+      <%= f.rich_textarea :tagline, class: 'form-control' %>
+    </div>
+
+    <div class='field'>
+      <%= f.input :subdomain, input_html: { class: 'form-control' } %>
+    </div>
+
+    <div class='field'>
+      <%= f.input :custom_domain, input_html: { class: 'form-control' } %>
+    </div>
+
+    <div class='field'>
+      <%= f.label :description %>
+      <%= f.rich_textarea :description, class: 'form-control min-h-vh-50' %>
+      <%= f.hint 'Ex. Problem to Solve, Unique Solution, Ideal Customer, Market, Competative Advantages, Unique Differentiation, etc' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>

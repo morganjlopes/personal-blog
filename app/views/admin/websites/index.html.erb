@@ -1,0 +1,9 @@
+<% content_for :title, "Websites" %>
+
+<%= link_to "New Website", new_admin_website_path, class: 'btn btn-primary float-end mt-2' %>
+
+<h1>Websites</h1>
+
+<div id="websites">
+  <%= render 'table', websites: @websites %>
+</div>
