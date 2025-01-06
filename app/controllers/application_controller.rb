@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   before_action :_set_domain
 
   def _set_domain
-    @subdomain = request.subdomain
-    @website   = Website.find_by(subdomain: @subdomain)
+    unless request.domain == 'launchwithless.com'
+      @subdomain = request.subdomain
+      @website   = Website.find_by(subdomain: @subdomain)
+    end
   end
 end
