@@ -6,8 +6,6 @@ Rails.application.configure do
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
 
-  config.hosts << ".lvh.me:3000"
-
   # Do not eager load code on boot.
   config.eager_load = false
 
