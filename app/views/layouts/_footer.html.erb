@@ -1,7 +1,7 @@
 <footer class='mt-5'>
   <div class='container'>
     <p class='text-center'>
-      &copy; <%= Time.now.year %> Morgan J. Lopes
+      &copy; <%= Time.now.year %> <%= @website&.name || Setting.site_name %>
     </p>
   </div>
 </footer>

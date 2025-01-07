@@ -1,0 +1,14 @@
+<%= simple_form_for(Setting.new, url: admin_settings_path) do |f| %>
+
+  <div class='field'>
+    <%= f.input :site_name, label: 'Site Name', input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class='field'>
+    <%= f.input :default_website_id, collection: Website.all, label: 'Default Website', input_html: { class: 'form-control' }, include_blank: false %>
+  </div>
+
+  <div>
+    <%= f.submit 'Update Settings', class: 'btn btn-primary' %>
+  </div>
+<% end %>

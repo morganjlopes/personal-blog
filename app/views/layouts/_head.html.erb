@@ -4,12 +4,12 @@
 <%= csrf_meta_tags %>
 <%= csp_meta_tag %>
 
-<%= display_meta_tags site: @website&.name || "Morgan Lopes", 
+<%= display_meta_tags site: @website&.name || Setting.site_name, 
   title:     @page_title,
   image_src: @page_meta_image_url,
   reverse:   true, 
   og: { 
-    site:      @website&.name || "Morgan Lopes", 
+    site:      @website&.name || Setting.site_name, 
     title:     @page_title, 
     image:     @page_meta_image_url,
     canonical: @canonical_url,

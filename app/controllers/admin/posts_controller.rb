@@ -17,6 +17,7 @@ class Admin::PostsController < Admin::BaseController
       content:      @dup.present? ? @dup.content : "",
       slug:         @dup.present? ? (@dup.slug + "-copy") : "",
       page_type:    @dup.present? ? @dup.page_type : "post",
+      website_ids:  @dup.present? ? @dup.website_ids : Setting.default_website_id,
       published_at: Post.next_unscheduled_date,
     )
   end

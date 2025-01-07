@@ -13,7 +13,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Blog",
-  "name": "Morgan Lopes Blog",
+  "name": <%= Setting.site_name %>,
   "description": "A collection of our latest posts on technology, business, and more.",
   "blogPosts": [
     <% @posts.each_with_index do |post, index| %>
