@@ -1,14 +1,17 @@
 <section class='container w-md py-5 text-center'>
   <h1><%= @website.tagline %></h1>
-  <div class='lead'>
-    <%= @website.description %>
-  </div>
 </section>
 
-<div id="posts" class='container w-md'>
+<section id="posts" class='container w-md my-5'>
   <h2 class=''>Recent Posts</h2>
   
   <%= render 'public/posts/list', posts: @posts %>
 
   <%= link_to 'View All', posts_path, class: 'btn btn-outline-secondary' if @posts.present? %>
-</div>
+</section>
+
+<hr>
+
+<section class='container w-md lead my-5'>
+  <%= @website.description %>
+</section>

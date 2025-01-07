@@ -2,7 +2,7 @@ class Admin::PostsController < Admin::BaseController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   def index
-    @posts = Post.order(created_at: :desc)
+    @posts = Post.order(published_at: :desc)
     @posts = @posts.send(params[:scope]) if params[:scope].present?
     @posts = @posts.contains(params[:q]) if params[:q].present?
   end

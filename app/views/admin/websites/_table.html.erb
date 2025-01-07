@@ -13,7 +13,7 @@
         <td><%= website.name %></td>
         <td class='text-center'><%= website.posts.count %></td>
         <td>
-          <%= root_url(subdomain: website.subdomain) %>
+          <%= link_to root_url(subdomain: website.subdomain), root_url(subdomain: website.subdomain), target: :_blank %>
         <td class='text-end'>
           <%= link_to 'Edit', edit_admin_website_path(website), class: 'btn btn-outline-primary' %>
         </td>
