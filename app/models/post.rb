@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   has_rich_text :content
 
   scope :recent,              -> { where('published_at > ?', 1.month.ago) }
-  scope :published,           -> { where.not(published_at: nil).order(published_at: :desc) }
+  scope :published,           -> { where.not(published_at: nil).where('published_at <= ?', Time.zone.now).order(published_at: :desc) }
   scope :drafts,              -> { where(published_at: nil) }
   scope :scheduled,           -> { where('published_at > ?', Time.zone.now) }
   scope :publicly_searchable, -> { published.where(visibility: :public) }
