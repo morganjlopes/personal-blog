@@ -10,10 +10,10 @@ Rails.application.routes.draw do
     resources :websites
   end
   
-  # constraints subdomain: /.+/ do
-  #   # User root + subdomain - ex. root_url(subdomain: 'example')
-  #   get '/', to: 'public/websites#show'
-  # end
+  constraints subdomain: /.+/ do
+    # User root + subdomain - ex. root_url(subdomain: 'example')
+    get '/', to: 'public/websites#show'
+  end
 
   scope module: 'public' do
     resources :posts, 
