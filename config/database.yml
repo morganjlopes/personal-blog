@@ -1,3 +1,4 @@
+heroku pg:pull DATABASE_URL morganlopes_development --remote production
 # PostgreSQL. Versions 9.3 and up are supported.
 #
 # Install the pg driver:
