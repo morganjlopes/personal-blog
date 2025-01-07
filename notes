@@ -1,8 +1,9 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+rails g scaffold Website name:string tagline description:text subdomain:string custom_domain:string
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+name
+tagline
+description
+subdomain
+custom_domain
+
+rails g model PublicationPost publication:references post_id:references
