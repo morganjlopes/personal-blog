@@ -43,7 +43,7 @@ class Post < ApplicationRecord
   end
 
   def self.next_unscheduled_date
-    scheduled_dates = Post.published.pluck("DATE(published_at)")
+    scheduled_dates = Post.scheduled.pluck("DATE(published_at)")
     current_date    = Time.zone.today
   
     (current_date..).find { |date| scheduled_dates.include?(date) == false }

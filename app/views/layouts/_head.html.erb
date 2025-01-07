@@ -4,7 +4,17 @@
 <%= csrf_meta_tags %>
 <%= csp_meta_tag %>
 
-<title><%= content_for(:title) || "Morganlopes" %></title>
+<%= display_meta_tags site: @website&.name || "Morgan Lopes", 
+  title:     @page_title,
+  image_src: @page_meta_image_url,
+  reverse:   true, 
+  og: { 
+    site:      @website&.name || "Morgan Lopes", 
+    title:     @page_title, 
+    image:     @page_meta_image_url,
+    canonical: @canonical_url,
+  }
+%>
 
 <%= yield :head %>
 
