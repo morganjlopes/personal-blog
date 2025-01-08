@@ -54,7 +54,13 @@ td {
   color: white;
 }
 
-#posts .calendar {
+.hint {
+  font-size: 12px;
+  font-style: italic;
+  color: #999;
+}
+
+#calendar .calendar {
   border-collapse: collapse;
   width: 100%;
 
@@ -84,7 +90,7 @@ td {
   .today { background-color: #D7F2FF; }
 }
 
-#posts #month {
+#calendar #month {
   margin: 0;
   padding-bottom: 10px;
   text-align: center;
@@ -96,7 +102,7 @@ td {
   }
 }
 
-#posts ul {
+#calendar ul {
   font-size: 11px;
   padding-left: 20px;
 }

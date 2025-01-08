@@ -23,6 +23,7 @@ gem 'friendly_id', '~> 5.5.0'
 gem 'pg_search'
 gem "meta-tags"
 gem 'rails-settings-cached'
+gem "aws-sdk-s3", require: false
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -56,6 +57,8 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+  
+  gem 'dotenv'
 end
 
 group :development do

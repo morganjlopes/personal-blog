@@ -24,6 +24,7 @@ class Admin::PostsController < Admin::BaseController
       slug:         @dup.present? ? (@dup.slug + "-copy") : "",
       page_type:    @dup.present? ? @dup.page_type : "post",
       website_ids:  @dup.present? ? @dup.website_ids : Setting.default_website_id,
+      tags:         @dup.present? ? @dup.tags : nil,
       published_at: params[:published_at].present? ? Time.zone.parse(params[:published_at]) : Post.next_unscheduled_date,
     )
   end
