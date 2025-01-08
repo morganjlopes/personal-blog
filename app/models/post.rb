@@ -13,14 +13,16 @@ class Post < ApplicationRecord
   scope :drafts,              -> { where(published_at: nil) }
   scope :scheduled,           -> { where('published_at > ?', Time.zone.now) }
   scope :publicly_searchable, -> { published.where(visibility: :public) }
+  scope :with_tag,            ->(tag) { where("tags @> ?", "[\"#{tag}\"]") }
 
   pg_search_scope :contains,
                   against: {
                     name:    'A',
-                    content: 'B',
+                    tags:    'B',
+                    content: 'C',
                   },
                   using: {
-                      tsearch: { prefix: true }
+                    tsearch: { prefix: true }
                   }
   
   enum :page_type, [
@@ -34,9 +36,13 @@ class Post < ApplicationRecord
     :private,
     :hidden
   ], prefix: true
+
+  attr_accessor :tags_as_string
   
   validates :name, presence: true
   validates :content, presence: true
+
+  before_save :_set_tags_from_string
 
   def summary
     content.to_plain_text.truncate(400)
@@ -47,5 +53,19 @@ class Post < ApplicationRecord
     current_date    = Time.zone.today
   
     (current_date..).find { |date| scheduled_dates.include?(date) == false }
+  end
+
+  def self.tags
+    # remove nil
+    self.pluck(:tags).flatten.uniq.compact
+  end
+
+  private
+
+  def _set_tags_from_string
+    return if tags_as_string.blank?
+    
+    # Remove any whitespace from the string
+    self.tags = tags_as_string.split(",").map(&:strip)
   end
 end

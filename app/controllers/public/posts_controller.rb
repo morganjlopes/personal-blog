@@ -3,7 +3,8 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.publicly_searchable
-    @posts = @posts.contains(params[:q]) if params[:q].present?
+    @posts = @posts.contains(params[:q])   if params[:q].present?
+    @posts = @posts.with_tag(params[:tag]) if params[:tag].present?
 
     @page_title = "Posts"
   end

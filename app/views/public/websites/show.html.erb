@@ -10,6 +10,15 @@
   <%= link_to 'View All', posts_path, class: 'btn btn-outline-secondary' if @posts.present? %>
 </section>
 
+<% if @posts.tags.present? %>
+  <section id="tags" class='container w-md my-5'>
+    <h2 class=''>Recent Topics</h2>
+    
+    <%= render 'public/tags/tags', tags: @posts.tags %>
+    
+  </section>
+<% end %>
+
 <hr>
 
 <section class='container w-md lead my-5'>

@@ -73,6 +73,7 @@ class Admin::PostsController < Admin::BaseController
         :is_pinned,
         :visibility, 
         :slug,
+        :tags_as_string,
         website_ids: []
       ])
     end

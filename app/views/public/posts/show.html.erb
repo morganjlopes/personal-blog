@@ -9,6 +9,8 @@
   <div class='lead'>
     <%= @post.content %>
   </div>
+
+  <%= render 'public/tags/tags', tags: @post.tags %>
 </section>
 
 <!-- Schema.org JSON-LD -->
