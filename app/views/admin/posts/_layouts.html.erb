@@ -1,0 +1,20 @@
+<% options = [
+  'table',
+  'calendar'
+] %>
+
+<div class="dropdown">
+  <button class="<%= btn_classes if defined?(btn_classes) %> btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="bi bi-<%= params[:layout] || 'grid' %>"></i>
+    <%= params[:layout].present? ? params[:layout].capitalize : 'Layout' %>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <% options.each do |option| %>
+      <li>
+        <%= link_to admin_posts_path(layout: option, q: params[:q], scope: params[:scope]), class: "dropdown-item #{'active' if option == params[:layout]}" do %>
+          <i class="bi bi-<%= option %> me-1"></i> <%= option.capitalize %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

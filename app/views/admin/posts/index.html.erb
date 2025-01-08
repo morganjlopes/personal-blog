@@ -14,12 +14,15 @@
     <% custom_class = 'active' if params[:scope] == name.downcase || (params[:scope].nil? && scope.nil?) %>
     
     <li class="nav-item">
-      <%= link_to name, url_for(scope: scope, q: params[:q]), class: "nav-link #{custom_class}" %>
+      <%= link_to name, url_for(scope: scope, q: params[:q], layout: params[:layout]), class: "nav-link #{custom_class}" %>
     </li>
   <% end %>
 </ul>
 
-<%= render 'shared/search' %>
+<div class='d-flex mb-3'>
+  <%= render 'shared/search' %>
+  <%= render 'admin/posts/layouts', btn_classes: 'ms-1' %>
+</div>
 
-<%= render "admin/posts/table", posts: @posts %>
+<%= render "admin/posts/#{params[:layout] || 'table'}", posts: @posts %>
 

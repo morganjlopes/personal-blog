@@ -2,15 +2,21 @@ class Admin::PostsController < Admin::BaseController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   def index
-    @posts = Post.order(published_at: :desc)
-    @posts = @posts.send(params[:scope]) if params[:scope].present?
-    @posts = @posts.contains(params[:q]) if params[:q].present?
+    @page_title = "Posts"
+    @posts      = Post.order(published_at: :desc)
+    @posts      = @posts.send(params[:scope]) if params[:scope].present?
+    @posts      = @posts.contains(params[:q]) if params[:q].present?
+
+    @date          = params[:date] ? Date.parse(params[:date]) : Date.today
+    @posts_by_date = @posts.group_by(&:published_on)
   end
 
   def show
+    @page_title = @post.name
   end
 
   def new
+    @page_title = "New Post"
     @dup  = Post.find(params[:dup]) if params[:dup].present?
     @post = Post.new(
       name:         @dup.present? ? "#{@dup.name} Copy" : "Untitled Post",
@@ -18,11 +24,12 @@ class Admin::PostsController < Admin::BaseController
       slug:         @dup.present? ? (@dup.slug + "-copy") : "",
       page_type:    @dup.present? ? @dup.page_type : "post",
       website_ids:  @dup.present? ? @dup.website_ids : Setting.default_website_id,
-      published_at: Post.next_unscheduled_date,
+      published_at: params[:published_at].present? ? Time.zone.parse(params[:published_at]) : Post.next_unscheduled_date,
     )
   end
 
   def edit
+    @page_title = "Edit Post"
   end
 
   def create

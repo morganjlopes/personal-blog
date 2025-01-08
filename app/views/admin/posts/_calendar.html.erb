@@ -1,0 +1,27 @@
+<div id="posts">
+  <h2 id="month">
+    <%= link_to date: @date.prev_month do %>
+      <i class='bi bi-chevron-left'></i>
+    <% end %>
+    <%= @date.strftime("%B %Y") %>
+    <%= link_to date: @date.next_month do %>
+      <i class='bi bi-chevron-right'></i>
+    <% end %>
+  </h2>
+  <%= calendar @date do |date| %>
+    <%= date.day %>
+    <% if date >= Time.now.to_date %>
+      <%= link_to new_admin_post_path(published_at: date), class: 'float-end' do %>
+        <i class='bi bi-plus'></i>
+      <% end %>
+    <% end %>
+
+    <% if @posts_by_date[date] %>
+      <ul class='list-unstyled'>
+        <% @posts_by_date[date].each do |post| %>
+          <li class='mb-2'><%= link_to post.name, edit_admin_post_path(post), class: 'text-decoration-none text-secondary' %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+</div>
