@@ -1,4 +1,4 @@
-class Public::PostsController < ApplicationController
+class Public::PostsController < Public::BaseController
   before_action :set_post, only: %i[ show ]
 
   def index

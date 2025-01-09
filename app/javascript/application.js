@@ -4,7 +4,7 @@ import "controllers"
 
 import "trix"
 import "@rails/actiontext"
-
+import "ahoy"
 
 document.addEventListener('turbo:load', () => {
   document.querySelectorAll('.targetValueChange').forEach(link => {
@@ -15,4 +15,6 @@ document.addEventListener('turbo:load', () => {
       target.value = link.getAttribute('data-value')
     })
   })
+
+  ahoy.trackClicks(".ahoyClick");
 })

@@ -4,6 +4,7 @@
       <th>Name</th>
       <th>Website</th>
       <th>Publish Date</th>
+      <th class='text-center'>Views</th>
       <th></th>
     </tr>
   </thead>
@@ -13,6 +14,7 @@
         <td><%= link_to post.name, edit_admin_post_path(post) %></td>
         <td><%== post.websites.map { |w| w.name }.join('<br>') %></td>
         <td><%= format_date(post.published_at) %></td>
+        <td class='text-center'><%= post.public_views.count %></td>
         <td class='text-end'>
           <%= render 'admin/posts/actions', post: post %>
         </td>

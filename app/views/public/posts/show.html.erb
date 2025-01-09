@@ -19,7 +19,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline":      "<%= @post.name %>",
-  "datePublished": "<%= @post.published_at.iso8601 %>",
+  "datePublished": "<%= @post.published_at&.iso8601 %>",
   "dateModified":  "<%= @post.updated_at.iso8601 %>",
   "author": {
     "@type": "Person",

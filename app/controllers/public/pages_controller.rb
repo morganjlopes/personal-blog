@@ -1,4 +1,4 @@
-class Public::PagesController < ApplicationController
+class Public::PagesController < Public::BaseController
   def home
     @website = Website.all.first
 

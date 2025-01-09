@@ -52,6 +52,10 @@ class Post < ApplicationRecord
     published_at&.to_date
   end
 
+  def public_views
+    Ahoy::Event.where_props(id: slug, controller: "public/posts", action: "show")
+  end
+
   def self.next_unscheduled_date
     scheduled_dates = Post.scheduled.pluck("DATE(published_at)")
     current_date    = 1.day.from_now.to_date

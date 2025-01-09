@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
       @website   = Website.find_by(subdomain: @subdomain)
     end
   end
+
+  def _track_action
+    ahoy.track "Ran action", request.path_parameters
+  end
 end

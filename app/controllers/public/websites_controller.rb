@@ -1,4 +1,4 @@
-class Public::WebsitesController < ApplicationController
+class Public::WebsitesController < Public::BaseController
 
   def show
     @posts = @website.posts.publicly_searchable
