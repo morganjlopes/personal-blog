@@ -21,6 +21,7 @@ Rails.application.routes.draw do
               only: [:index, :show], 
               path: 'posts'
 
+    get 'feed', to: 'posts#feed', defaults: { format: :rss }
     get "pages/home"
   end
 
