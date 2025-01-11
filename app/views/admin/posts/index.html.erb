@@ -1,6 +1,12 @@
 <% content_for :title, "Posts" %>
 
-<%= link_to "New Post", new_admin_post_path, class: 'btn btn-primary float-end mt-2' %>
+<div class='float-end mt-2'>
+  <%= link_to url_for(format: "csv"), class: 'btn btn-outline-primary' do %>
+    <i class='bi bi-cloud-download me-1'></i> Download CSV
+  <% end %>
+  <%= link_to "New Post", new_admin_post_path, class: 'btn btn-primary' %>
+</div>
+
 <h1>Posts</h1>
 
 <ul class="nav nav-underline my-3">

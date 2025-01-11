@@ -9,6 +9,11 @@ class Admin::PostsController < Admin::BaseController
 
     @date          = params[:date] ? Date.parse(params[:date]) : Date.today
     @posts_by_date = @posts.group_by(&:published_on)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @posts.to_csv }
+    end
   end
 
   def show

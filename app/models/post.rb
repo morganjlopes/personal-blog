@@ -56,6 +56,19 @@ class Post < ApplicationRecord
     Ahoy::Event.where_props(id: slug, controller: "public/posts", action: "show")
   end
 
+  def export_attributes
+    {
+      "id"           => id,
+      "name"         => name,
+      "content"      => content,
+      "tags"         => tags,
+      "published_at" => published_at,
+      "visibility"   => visibility,
+      "slug"         => slug,
+      "websites"     => websites.pluck(:name).join(", ")
+    }
+  end
+
   def self.next_unscheduled_date
     scheduled_dates = Post.scheduled.pluck("DATE(published_at)")
     current_date    = 1.day.from_now.to_date
@@ -66,6 +79,16 @@ class Post < ApplicationRecord
   def self.tags
     # remove nil
     self.pluck(:tags).flatten.uniq.compact
+  end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << self.first.export_attributes.keys
+
+      all.each do |record|
+        csv << record.export_attributes.values
+      end
+    end
   end
 
   private
