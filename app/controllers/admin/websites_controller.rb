@@ -65,6 +65,20 @@ class Admin::WebsitesController < Admin::BaseController
 
     # Only allow a list of trusted parameters through.
     def website_params
-      params.expect(website: [ :name, :tagline, :description, :subdomain, :custom_domain ])
+      params.expect(website: [
+        :name,
+        :tagline,
+        :description,
+        :subdomain,
+        :custom_domain,
+        :youtube_url,
+        :twitter_url,
+        :facebook_url,
+        :instagram_url,
+        :linkedin_url,
+        :github_url,
+        :dribbble_url,
+        :strava_url,
+      ])
     end
 end

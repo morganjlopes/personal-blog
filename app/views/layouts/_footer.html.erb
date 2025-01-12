@@ -1,5 +1,65 @@
 <footer class='mt-5'>
   <div class='container'>
+    <% if @website.present? %>
+      <ul class='list-inline text-center my-2'>
+        <% if @website.linkedin_url.present? %>
+          <li class='list-inline-item'>
+            <%= link_to @website.linkedin_url, class: 'text-dark', target: :_blank do %>
+              <i class="bi bi-linkedin"></i>
+            <% end %>
+          </li>
+        <% end %>
+        <% if @website.instagram_url.present? %>
+          <li class='list-inline-item'>
+            <%= link_to @website.instagram_url, class: 'text-dark', target: :_blank do %>
+              <i class="bi bi-instagram"></i>
+            <% end %>
+          </li>
+        <% end %>
+        <% if @website.twitter_url.present? %>
+          <li class='list-inline-item'>
+            <%= link_to @website.twitter_url, class: 'text-dark', target: :_blank do %>
+              <i class="bi bi-twitter-x"></i>
+            <% end %>
+          </li>
+        <% end %>
+        <% if @website.facebook_url.present? %>
+          <li class='list-inline-item'>
+            <%= link_to @website.facebook_url, class: 'text-dark', target: :_blank do %>
+              <i class="bi bi-facebook"></i>
+            <% end %>
+          </li>
+        <% end %>
+        <% if @website.youtube_url.present? %>
+          <li class='list-inline-item'>
+            <%= link_to @website.youtube_url, class: 'text-dark', target: :_blank do %>
+              <i class="bi bi-youtube"></i>
+            <% end %>
+          </li>
+        <% end %>
+        <% if @website.github_url.present? %>
+          <li class='list-inline-item'>
+            <%= link_to @website.github_url, class: 'text-dark', target: :_blank do %>
+              github_url
+            <% end %>
+          </li>
+        <% end %>
+        <% if @website.dribbble_url.present? %>
+          <li class='list-inline-item'>
+            <%= link_to @website.dribbble_url, class: 'text-dark', target: :_blank do %>
+              <i class="bi bi-dribbble"></i>
+            <% end %>
+          </li>
+        <% end %>
+        <% if @website.strava_url.present? %>
+          <li class='list-inline-item'>
+            <%= link_to @website.strava_url, class: 'text-dark', target: :_blank do %>
+              <i class="bi bi-strava"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
     <p class='text-center'>
       &copy; <%= Time.now.year %> <%= @website&.name || Setting.site_name %>
     </p>

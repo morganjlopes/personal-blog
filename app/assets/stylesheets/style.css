@@ -106,3 +106,17 @@ td {
   font-size: 11px;
   padding-left: 20px;
 }
+
+.field_with_errors .error,
+.error_notification {
+  background-color: #f42121;
+  display: block;
+  padding: 10px;
+  color: white;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.error_notification {
+  margin-bottom: 1rem;
+}
