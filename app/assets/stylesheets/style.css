@@ -1,122 +1,130 @@
 trix-toolbar {
-  position: sticky;
-  top: 0px;
-  background: white;
+    position: sticky;
+    top: 0px;
+    background: white;
 }
 
 pre,
 .trix-content pre {
-  margin: 12px 0px;
-  border-radius: 5px;
-  padding: 1em;
-  display: inline-block;
-  width: 100%;
-  vertical-align: top;
-  font-family: monospace;
-  font-size: 0.9em;
-  white-space: pre;
-  background-color: #eee;
-  overflow-x: auto;
+    margin: 12px 0px;
+    border-radius: 5px;
+    padding: 1em;
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    font-family: monospace;
+    font-size: 0.9em;
+    white-space: pre;
+    background-color: #eee;
+    overflow-x: auto;
 }
 
 #main {
-  min-height: 100vh;
+    min-height: 100vh;
 }
 
 .field {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 td {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
 .w-md {
-  max-width: 800px;
+    max-width: 800px;
 }
 
 .min-h-vh-50 {
-  min-height: 50vh;
+    min-height: 50vh;
 }
 
 .min-h-vh-75 {
-  min-height: 75vh;
+    min-height: 75vh;
 }
 
 .btn-outline-form {
-  border: var(--bs-border-width) solid var(--bs-border-color);
-  color: var(--bs-border-color);
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    color: var(--bs-border-color);
 }
 
 .btn-outline-form:hover {
-  border-color: #666;
-  background-color: #666;
-  color: white;
+    border-color: #666;
+    background-color: #666;
+    color: white;
 }
 
 .hint {
-  font-size: 12px;
-  font-style: italic;
-  color: #999;
+    font-size: 12px;
+    font-style: italic;
+    color: #999;
 }
 
 #calendar .calendar {
-  border-collapse: collapse;
-  width: 100%;
+    border-collapse: collapse;
+    width: 100%;
 
-  td, th {
-    font-family: "Lucida Grande", arial, helvetica, sans-serif;
-    font-size: 10px;
-    padding: 6px;
-    border: 1px solid #999;
-  }
+    td,
+    th {
+        font-family: "Lucida Grande", arial, helvetica, sans-serif;
+        font-size: 10px;
+        padding: 6px;
+        border: 1px solid #999;
+    }
 
-  th {
-    background: #DDD;
-    color: #666;
-    text-align: center;
-    width: 14.2857142857143%;
-  }
+    th {
+        background: #DDD;
+        color: #666;
+        text-align: center;
+        width: 14.2857142857143%;
+    }
 
-  td {
-    background: #FFF;
-    color: #777;
-    height: 150px;
-    vertical-align: top;
-    font-size: 16px;
-  }
+    td {
+        background: #FFF;
+        color: #777;
+        height: 150px;
+        vertical-align: top;
+        font-size: 16px;
+    }
 
-  .notmonth, .notmonth a { color: #CCC; }
-  .today { background-color: #D7F2FF; }
+    .notmonth,
+    .notmonth a {
+        color: #CCC;
+    }
+
+    .today {
+        background-color: #D7F2FF;
+    }
 }
 
 #calendar #month {
-  margin: 0;
-  padding-bottom: 10px;
-  text-align: center;
-  font-size: 22px;
-  a {
-    text-decoration: none;
-    padding: 0 10px;
-    color: #999;
-  }
+    margin: 0;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 22px;
+
+    a {
+        text-decoration: none;
+        padding: 0 10px;
+        color: #999;
+    }
 }
 
 #calendar ul {
-  font-size: 11px;
-  padding-left: 20px;
+    font-size: 11px;
+    padding-left: 20px;
 }
 
 .field_with_errors .error,
 .error_notification {
-  background-color: #f42121;
-  display: block;
-  padding: 10px;
-  color: white;
-  margin-top: 5px;
-  border-radius: 5px;
+    background-color: #f42121;
+    display: block;
+    padding: 10px;
+    color: white;
+    margin-top: 5px;
+    border-radius: 5px;
 }
 
 .error_notification {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
