@@ -1,7 +1,21 @@
+
 trix-toolbar {
   position: sticky;
   top: 0px;
   background: white;
+  padding-top: 10px;
+  z-index: 99999;
+}
+
+.trix-content h1,
+.trix-content h2,
+.trix-content h3,
+.trix-content h4,
+.trix-content h5,
+.trix-content li,
+.trix-content ul {
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
 }
 
 pre,
@@ -21,6 +35,18 @@ pre,
 
 #main {
   min-height: 100vh;
+}
+
+.text-jumbo {
+  font-size: 4rem;
+}
+
+.trix-content > div:first-child::first-letter {
+  float: left;         /* Let the first letter sit to the left of the text */
+  font-size: 3em;      /* Increase its size */
+  line-height: 1;      /* Control vertical spacing */
+  margin-right: 0.1em; /* Add a little space so text doesn't bump into it */
+  font-weight: bold;   /* Make it stand out */
 }
 
 .field {
