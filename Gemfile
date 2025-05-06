@@ -24,7 +24,7 @@ gem 'pg_search'
 gem "meta-tags"
 gem 'rails-settings-cached'
 gem "aws-sdk-s3", require: false
-gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.14"
 gem "ahoy_matey"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
